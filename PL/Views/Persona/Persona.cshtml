@@ -1,0 +1,45 @@
+﻿@model ML.Informacion
+@{
+    ViewData["Title"] = "Persona";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <h1 style="text-align:center"><strong>Tus Cursos</strong></h1>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-primary table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre del Curso</th>
+                    <th>Sector</th>
+                    <th>Fecha de Inscripción</th>
+                    <th>Fecha de Certificación</th>
+                    <th>Avance</th>
+                    <th>Calificación</th>
+                    <th>Folio de Certificación</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var inscription in Model.Inscriptions)
+                {
+                    <tr>
+                        <td>@inscription.Course.Name</td>
+                        <td>@inscription.Course.Sector.Name</td>
+                        <td>@inscription.InscripcionDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@inscription.CertificationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@inscription.Advance</td>
+                        <td>@inscription.ScoreCourse</td>
+                        <td>@inscription.FolioCertificate</td>
+                        <td><img src="@inscription.Course.ImageUrl" alt="@inscription.Course.Name" style="max-width: 100px; max-height: 100px;" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
